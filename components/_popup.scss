@@ -1,0 +1,87 @@
+.popup {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, .8);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+    backdrop-filter: blur(10px);
+    @supports (backdrop-filter: blur(20px)){
+        background-color: rgba($color-black, .2);
+    }
+
+    &_content {
+        @include abscenter;
+        width: 75%;
+        // height: 50rem;
+        background-color: #fff;
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        border-radius: 3px;
+        display: table;
+        overflow: hidden;
+        opacity: 0;
+        transform: translate(-50%,-50%) scale(.5);
+        transition: all .4s;
+        
+
+    }
+
+    &_left {
+        width: 33.33333333%;
+        display: table-cell;
+
+
+    }
+
+    &_right {
+        width: 66.666666%;
+        display: table-cell;
+        vertical-align: middle;
+        padding: 3rem 5rem;
+    }
+
+    &_img {
+        display: block;
+        width: 100%;
+    }
+
+    &_text {
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 0 solid rgba($color-black, .2);
+        hyphens: auto;
+    }
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+    &:target &_content{
+        opacity: 1;
+        transform: translate(-50% ,-50%) scale(1);
+    }
+
+    &_close {
+
+        &:link,
+        &:visited {
+            color: $color-dark-grey;
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        &:hover{
+            color: red;
+        }
+        
+
+    }
+}
